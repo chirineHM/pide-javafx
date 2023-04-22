@@ -174,5 +174,36 @@ public void modifier(Subscription a) {
     }
 }
 
+public ObservableList<Subscription> search(String searchText) {
+    ObservableList<Subscription> subscriptions = FXCollections.observableArrayList();
+    try {
+        String sql = "SELECT * FROM subscription WHERE description LIKE ?";
+        PreparedStatement stmt = cnx.prepareStatement(sql);
+        stmt.setString(1, "%" + searchText + "%");
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Subscription p = new Subscription();
+
+            int typeId = rs.getInt("type_sub_id");
+            typeSub c = getTypeSubById(typeId);
+            p.setTypeSubs(c);
+
+            p.setId(rs.getInt("id"));
+            p.setDescription(rs.getString("description"));
+            p.setPrice(rs.getInt("price"));
+            p.setStart_date(rs.getDate("start_date"));
+            p.setEnd_date(rs.getDate("end_date"));
+            p.setPeriod(rs.getInt("period"));
+
+            subscriptions.add(p);
+        }
+
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return subscriptions;
+}
+
 
 }

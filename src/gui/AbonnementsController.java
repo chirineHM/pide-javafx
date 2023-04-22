@@ -64,6 +64,10 @@ public class AbonnementsController implements Initializable {
     private ComboBox<String> combo;
     @FXML
     private Button mod;
+    @FXML
+    private TextField searchField;
+    @FXML
+    private Button searchButton;
 
 
 
@@ -294,4 +298,20 @@ selectedSubscription.setTypeSubs(selectedType);
 
 
 */
+@FXML
+private void search(ActionEvent event) {
+    String searchText = searchField.getText().trim().toLowerCase();
+
+    if (searchText.isEmpty()) {
+        refresh();
+        return;
+    }
+
+    List<Subscription> searchResults = subsService.search(searchText);
+
+    subscriptionsTable.getItems().clear();
+    subscriptionsTable.getItems().addAll(searchResults);
+}
+
+
 }
