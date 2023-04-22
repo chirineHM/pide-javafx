@@ -17,7 +17,7 @@
        <Button fx:id="tfcreate" layoutX="192.0" layoutY="854.0" mnemonicParsing="false" onAction="#Add" prefHeight="43.0" prefWidth="115.0" text="Ajouter" />
   
        <Button fx:id="removetf" layoutX="926.0" layoutY="885.0" mnemonicParsing="false" onAction="#remove" prefHeight="43.0" prefWidth="115.0" text="Supprimer" />
-        <Button fx:id="mod" onAction="#update" layoutX="409.0" layoutY="854.0" mnemonicParsing="false"  prefHeight="43.0" prefWidth="115.0" text="Modifier" />
+        <Button fx:id="mod" onAction="#Update" layoutX="409.0" layoutY="854.0" mnemonicParsing="false"  prefHeight="43.0" prefWidth="115.0" text="Modifier" />
    <VBox alignment="CENTER" layoutX="632.0" layoutY="64.0" prefHeight="811.0" prefWidth="707.0" spacing="10.0" AnchorPane.bottomAnchor="106.0" AnchorPane.leftAnchor="632.0" AnchorPane.rightAnchor="226.0" AnchorPane.topAnchor="64.0">
       <TableView fx:id="subscriptionsTable" onMouseClicked="#handleRowSelect" prefHeight="686.0" prefWidth="596.0">
          <columns>

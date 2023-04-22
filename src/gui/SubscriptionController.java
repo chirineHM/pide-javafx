@@ -124,20 +124,24 @@ private void Add(ActionEvent event) {
     SubService service = new SubService();
 
     String name = nameTextField.getText();
-    String description = descriptionTextField.getText();
-    String etat = etatTextField.getText();
+String description = descriptionTextField.getText();
+String etat = etatTextField.getText();
+
+if (name != null && !name.isEmpty() && !name.matches(".*\\d.*") 
+    && description != null && !description.isEmpty() && !description.matches(".*\\d.*") 
+    && etat != null && !etat.isEmpty() && !etat.matches(".*\\d.*")) {
     
-    if (name != null && !name.isEmpty() && description != null && !description.isEmpty() && etat != null && !etat.isEmpty()) {
-        typeSub newSubscription = new typeSub(name, description, etat);
-        service.ajouter(newSubscription);
-        refreshSubscriptionTable();
-    } else {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Champs obligatoires");
-        alert.setHeaderText(null);
-        alert.setContentText("Veuillez remplir tous les champs obligatoires.");
-        alert.showAndWait();
-    }
+    typeSub newSubscription = new typeSub(name, description, etat);
+    service.ajouter(newSubscription);
+    refreshSubscriptionTable();
+} else {
+    Alert alert = new Alert(Alert.AlertType.WARNING);
+    alert.setTitle("Champs obligatoires");
+    alert.setHeaderText(null);
+    alert.setContentText("Veuillez remplir tous les champs obligatoires avec des valeurs valides.");
+    alert.showAndWait();
+}
+
 }
 @FXML
 private void update(ActionEvent event) {

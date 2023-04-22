@@ -3,6 +3,7 @@ import entities.Subscription;
 import entities.typeSub;
 import java.net.URL;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
@@ -10,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -19,7 +21,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import services.SubService;
 import services.SubsService;
 
 
@@ -134,25 +135,101 @@ private void Add(ActionEvent event) {
     SubsService service = new SubsService();
 
     String description = des.getText();
-    String pri = price.getText();
-    java.sql.Date date_s = java.sql.Date.valueOf(start.getValue());
-    java.sql.Date date_e = java.sql.Date.valueOf(end.getValue());
-    String peri = period.getText();
-    String selectedTypeSubName = combo.getSelectionModel().getSelectedItem();
+String pri = price.getText();
+java.sql.Date date_s = java.sql.Date.valueOf(start.getValue());
+java.sql.Date date_e = java.sql.Date.valueOf(end.getValue());
+String peri = period.getText();
+String selectedTypeSubName = combo.getSelectionModel().getSelectedItem();
 
-    // Retrieve the corresponding TypeSub ID from the database
-int selectedTypeSubId = service.getTypeSubIdByName(selectedTypeSubName);
-
-    // Create the new Subscription object with the selected TypeSub ID
-Subscription newSubscription = new Subscription(description, Integer.parseInt(pri), date_s, date_e, Integer.parseInt(peri), selectedTypeSubId);
-
-    // Add the new subscription
-    service.addSubscription(newSubscription);
-
-    // Refresh the table view
-    refresh();
+// Check if any of the fields are empty
+if (description == null || description.isEmpty() || pri == null || pri.isEmpty() ||
+        peri == null || peri.isEmpty() || selectedTypeSubName == null) {
+    Alert alert = new Alert(AlertType.WARNING);
+    alert.setTitle("Empty fields");
+    alert.setHeaderText(null);
+    alert.setContentText("Please fill in all fields.");
+    alert.showAndWait();
+    return;
 }
 
+// Check if the description contains any numbers
+if (description.matches(".*\\d.*")) {
+    Alert alert = new Alert(AlertType.WARNING);
+    alert.setTitle("Invalid description");
+    alert.setHeaderText(null);
+    alert.setContentText("Description cannot contain numbers.");
+    alert.showAndWait();
+    return;
+}
+
+// Retrieve the corresponding TypeSub ID from the database
+int selectedTypeSubId = service.getTypeSubIdByName(selectedTypeSubName);
+
+// Validate the dates
+LocalDate currentDate = LocalDate.now();
+LocalDate startDate = start.getValue();
+LocalDate endDate = end.getValue();
+
+if (startDate == null || startDate.isBefore(currentDate)) {
+    Alert alert = new Alert(AlertType.ERROR);
+    alert.setTitle("Invalid start date");
+    alert.setHeaderText(null);
+    alert.setContentText("Please select a start date that is greater than or equal to the current date.");
+    alert.showAndWait();
+    return;
+}
+
+if (endDate == null || endDate.isBefore(startDate)) {
+    Alert alert = new Alert(AlertType.ERROR);
+    alert.setTitle("Invalid end date");
+    alert.setHeaderText(null);
+    alert.setContentText("Please select an end date that is greater than the start date.");
+    alert.showAndWait();
+    return;
+}
+
+// Create the new Subscription object with the selected TypeSub ID
+Subscription newSubscription = new Subscription(description, Integer.parseInt(pri), date_s, date_e, Integer.parseInt(peri), selectedTypeSubId);
+
+// Add the new subscription
+service.addSubscription(newSubscription);
+
+// Refresh the table view
+refresh();
+
+}
+
+
+
+@FXML
+private void Update(ActionEvent event) {
+    SubsService service = new SubsService();
+
+   // Get the selected subscription from the table view
+Subscription selectedSubscription = subscriptionsTable.getSelectionModel().getSelectedItem();
+
+// Retrieve the corresponding TypeSub object from the database
+String selectedTypeSubName = combo.getSelectionModel().getSelectedItem();
+int selectedTypeSub = service.getTypeSubIdByName(selectedTypeSubName);
+
+// Update the fields of the selected subscription
+selectedSubscription.setDescription(des.getText());
+selectedSubscription.setPrice(Integer.parseInt(price.getText()));
+selectedSubscription.setStart_date(Date.valueOf(start.getValue()));
+selectedSubscription.setEnd_date(Date.valueOf(end.getValue()));
+selectedSubscription.setPeriod(Integer.parseInt(period.getText()));
+selectedSubscription.setType_sub_id(selectedTypeSub);
+
+// Update the subscription in the database
+service.modifier(selectedSubscription);
+
+// Update the value of the combo box
+combo.setValue(selectedTypeSubName);
+
+// Refresh the table view
+refresh();
+
+}
 
 
 
@@ -180,7 +257,7 @@ private void handleRowSelect(MouseEvent event) {
         }
     }
 }
-
+/*
 @FXML
 private void update(ActionEvent event) {
     // Get the selected row
@@ -216,5 +293,5 @@ selectedSubscription.setTypeSubs(selectedType);
 }
 
 
-
+*/
 }

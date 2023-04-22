@@ -151,7 +151,7 @@ public List<String> getAllTypeSubNames() {
 
 
 public void modifier(Subscription a) {
-    String sql = "UPDATE abonnement SET description = ?, price = ?, start_date = ?, end_date = ?, period = ?, type_sub_id = ? WHERE id = ?";
+    String sql = "UPDATE subscription SET description = ?, price = ?, start_date = ?, end_date = ?, period = ?, type_sub_id = ? WHERE id = ?";
     PreparedStatement ste;
     try {
         ste = cnx.prepareStatement(sql);
