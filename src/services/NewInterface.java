@@ -21,6 +21,7 @@ public interface NewInterface<T> {
 public void modifier(T t);
  // public typeSub displayById(int id) ;
      // public typeSub getOneByName(String name) ;
+public List<typeSub> search(String searchQuery) ;
 
     
 }

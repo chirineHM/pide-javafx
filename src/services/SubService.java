@@ -205,4 +205,27 @@ public void modifier(typeSub t) {
         
         
     */
+    public List<typeSub> search(String name) {
+    List<typeSub> typeSubs = new ArrayList<>();
+    String sql = "SELECT * FROM type_sub WHERE type_name LIKE ?";
+    try (PreparedStatement stmt = cnx.prepareStatement(sql)) {
+        stmt.setString(1, "%" + name + "%");
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            typeSub t = new typeSub(
+                rs.getInt("id"),
+                rs.getString("type_name"),
+                rs.getString("desc_t"),
+                rs.getString("etat")
+            );
+            typeSubs.add(t);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return typeSubs;
+}
+
+    
+
 }

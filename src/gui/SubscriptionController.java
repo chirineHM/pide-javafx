@@ -26,7 +26,7 @@ import services.SubService;
 public class SubscriptionController implements Initializable {
 
     // Inject the FXML elements
- 
+
     @FXML
     private Button tfadd;
      @FXML
@@ -50,13 +50,18 @@ private TableColumn<typeSub, Integer> idTableColumn;
     private TableColumn<typeSub, String> descriptionColumn;
     @FXML
     private TableColumn<typeSub, String> etatColumn;
-     private Button tfremove;
     @FXML
-
+     private Button tfremove;
     private SubService subscriptionService;
 
 @FXML
 private Label abonnementsLabel;
+    @FXML
+    private TextField searchField;
+    @FXML
+    private Button searchButton;
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
@@ -75,6 +80,8 @@ private Label abonnementsLabel;
         System.out.println("Initialized subscription table");
         System.out.println("Subscription table items: " + subscriptionTable.getItems());
         System.out.println("Subscription table columns: " + subscriptionTable.getColumns());
+        searchButton.setOnAction(this::search);
+
         
          abonnementsLabel.setOnMouseClicked(event -> {
         try {
@@ -89,6 +96,18 @@ private Label abonnementsLabel;
     });
         
     }
+    @FXML
+private void search(ActionEvent event) {
+    String searchTerm = searchField.getText();
+    if (!searchTerm.isEmpty()) {
+        List<typeSub> searchResults = subscriptionService.search(searchTerm);
+        subscriptionTable.getItems().clear();
+        subscriptionTable.getItems().addAll(searchResults);
+    } else {
+        refreshSubscriptionTable();
+    }
+}
+
 
     // Method to refresh the subscription table with the latest data
     private void refreshSubscriptionTable() {
@@ -109,7 +128,6 @@ private void remove(ActionEvent event) {
     refreshSubscriptionTable();
 }
 
-@FXML
 private void tableClicked(MouseEvent event) {
     typeSub p = subscriptionTable.getSelectionModel().getSelectedItem();
     if (p != null) {
