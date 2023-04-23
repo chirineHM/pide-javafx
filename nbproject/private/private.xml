@@ -3,18 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/3A39/JavaFxNYX/src/tools/MaConnection.java</file>
-            <file>file:/D:/3A39/JavaFxNYX/src/services/SubsService.java</file>
-            <file>file:/D:/3A39/JavaFxNYX/src/services/NewInterface.java</file>
-            <file>file:/D:/3A39/JavaFxNYX/src/gui/Abonnements.fxml</file>
-            <file>file:/D:/3A39/JavaFxNYX/src/gui/SubscriptionController.java</file>
-            <file>file:/D:/3A39/JavaFxNYX/src/services/SubService.java</file>
-            <file>file:/D:/3A39/JavaFxNYX/src/entities/Subscription.java</file>
-            <file>file:/D:/3A39/JavaFxNYX/src/entities/typeSub.java</file>
-            <file>file:/D:/3A39/JavaFxNYX/src/gui/AbonnementsController.java</file>
-            <file>file:/D:/3A39/JavaFxNYX/src/services/subInterface.java</file>
-            <file>file:/D:/3A39/JavaFxNYX/src/gui/subscription.fxml</file>
-            <file>file:/D:/3A39/JavaFxNYX/src/javafxnyx/JavaFxNYX.java</file>
+            <file>file:/C:/Users/uSER/Desktop/JavaFxNYX/src/gui/Abonnements.fxml</file>
+            <file>file:/C:/Users/uSER/Desktop/JavaFxNYX/src/gui/AbonnementsController.java</file>
+            <file>file:/C:/Users/uSER/Desktop/JavaFxNYX/src/services/SubsService.java</file>
+            <file>file:/C:/Users/uSER/Desktop/JavaFxNYX/src/gui/SubscriptionController.java</file>
+            <file>file:/C:/Users/uSER/Desktop/JavaFxNYX/src/services/subInterface.java</file>
+            <file>file:/C:/Users/uSER/Desktop/JavaFxNYX/src/entities/Subscription.java</file>
         </group>
     </open-files>
 </project-private>

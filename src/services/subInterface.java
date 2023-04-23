@@ -8,8 +8,7 @@ package services;
 
 
 import entities.Subscription;
-import entities.typeSub;
-import java.util.List;
+import javafx.stage.Stage;
 
 /**
  *
@@ -23,5 +22,6 @@ public interface subInterface<S> {
     public void addSubscription(Subscription s) ;
         
 
-    
+        public void Qr( Stage primaryStage,Subscription p) ;
+
 }

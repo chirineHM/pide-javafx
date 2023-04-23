@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import entities.typeSub;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,12 +19,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import services.SubService;
+import javafx.scene.control.TableView;
 
 public class SubscriptionController implements Initializable {
 
@@ -60,7 +63,10 @@ private Label abonnementsLabel;
     private TextField searchField;
     @FXML
     private Button searchButton;
+    @FXML
+    private Button printButton;
 
+   
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -187,8 +193,6 @@ private void update(ActionEvent event) {
     }
 }
 
-
-
 @FXML
 void handleTableClick(MouseEvent event) {
     // Get the selected row
@@ -199,6 +203,29 @@ void handleTableClick(MouseEvent event) {
         descriptionTextField.setText(selectedSubscription.getDescription());
         etatTextField.setText(selectedSubscription.getEtat());
     }
+}
+@FXML
+private void printTable(TableView<?> table, String filename) throws IOException {
+    File file = new File(filename);
+    FileWriter writer = new FileWriter(file);
+
+    // Write table headers
+    for (TableColumn<?, ?> col : table.getColumns()) {
+        writer.write(col.getText() + ",");
+    }
+    writer.write("\n");
+
+    // Write table data
+    for (Object row : table.getItems()) {
+        for (TableColumn<?, ?> col : table.getColumns()) {
+            TableColumn<Object, ?> column = (TableColumn<Object, ?>) col;
+            Object cellData = column.getCellData(row);
+            writer.write(cellData + ",");
+        }
+        writer.write("\n");
+    }
+
+    writer.close();
 }
 
 

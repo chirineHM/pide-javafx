@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,6 +23,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import services.SubsService;
 
 
@@ -68,6 +71,8 @@ public class AbonnementsController implements Initializable {
     private TextField searchField;
     @FXML
     private Button searchButton;
+    @FXML
+    private ComboBox<String> tri;
 
 
 
@@ -97,25 +102,56 @@ typeN.setCellValueFactory(cellData -> {
 
 
 
-
-
-
-
-   
-
- 
-
-
-      
-
         refresh();
 
         // Debugging messages
         System.out.println("Initialized subscription table");
         System.out.println("Subscription table items: " + subscriptionsTable.getItems());
         System.out.println("Subscription table columns: " + subscriptionsTable.getColumns());
+        
+        
+        
+        
+        
+        
+        ///////////////////////////////////////////////
+        
+        
+        ObservableList<String> options = FXCollections.observableArrayList("Par prix","Par date");
+       tri.setItems(options);
+      tri.valueProperty().addListener((obs, oldVal, newVal) -> {
+    // effectuer la requête de tri correspondante ici
+    String selectedValue = tri.getValue();
+   // PromotionDao pd = new PromotionDao();
 
+     switch(selectedValue) {
+        case "Par prix":
+       ObservableList<Subscription> pourcentageliste = (ObservableList<Subscription>) subsService.ordredbyPrice();
+      subscriptionsTable.setItems(pourcentageliste);
+            break;
+        case "Par date":
+            ObservableList<Subscription> dateliste = (ObservableList<Subscription>) subsService.ordredbyDate();
+      subscriptionsTable.setItems(dateliste);
+
+            break;
+            case "Par date de fin":
+            ObservableList<Subscription> finliste = (ObservableList<Subscription>) subsService.ordredbyPrice();
+      subscriptionsTable.setItems(finliste);
+
+            break;
+       
+     
+            
     }
+
+      });
+
+        ///////////////////////////////////////////////
+        
+
+    
+        
+              }
 private void refresh() {
     if (subsService != null) {
         // Get the list of subscriptions from the service
@@ -312,6 +348,17 @@ private void search(ActionEvent event) {
     subscriptionsTable.getItems().clear();
     subscriptionsTable.getItems().addAll(searchResults);
 }
+
+    @FXML
+    private void QR(MouseEvent event) {
+         Stage qrStage = new Stage();
+        Subscription p;
+        
+        p=subscriptionsTable.getSelectionModel().getSelectedItem();
+        subsService.Qr(qrStage, p);
+      
+          
+    }
 
 
 }

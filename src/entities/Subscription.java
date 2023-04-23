@@ -10,16 +10,9 @@ public class Subscription {
     private Date end_date;
     private int period;
     private typeSub typeSubs;
-int type_sub_id;
+    int type_sub_id;
 
-    public int getType_sub_id() {
-        return type_sub_id;
-    }
-
-    public void setType_sub_id(int type_sub_id) {
-        this.type_sub_id = type_sub_id;
-    }
-
+    
     public Subscription() {
     }
 
@@ -111,6 +104,13 @@ int type_sub_id;
     @Override
     public String toString() {
         return "Subscription{" + "id=" + id + ", description=" + description + ", price=" + price + ", start_date=" + start_date + ", end_date=" + end_date + ", period=" + period + ", typeSubs=" + typeSubs + '}';
+    }
+public int getType_sub_id() {
+        return type_sub_id;
+    }
+
+    public void setType_sub_id(int type_sub_id) {
+        this.type_sub_id = type_sub_id;
     }
 
 
