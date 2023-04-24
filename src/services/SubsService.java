@@ -320,7 +320,7 @@ public List<Subscription> ordredbyDate() {
 
         Scene scene = new Scene(root, 350, 350);
 
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Subscription QR");
         primaryStage.setScene(scene);
        primaryStage.show();
     }

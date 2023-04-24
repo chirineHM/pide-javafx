@@ -8,7 +8,7 @@ import entities.typeSub;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import javafx.collections.ObservableList;
+import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
@@ -65,7 +67,8 @@ private Label abonnementsLabel;
     private Button searchButton;
     @FXML
     private Button printButton;
-
+@FXML
+private Button payerButton;
    
 
     @Override
@@ -79,7 +82,7 @@ private Label abonnementsLabel;
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         etatColumn.setCellValueFactory(new PropertyValueFactory<>("etat"));
 
-      
+        
         refreshSubscriptionTable();
 
         // Debugging messages
