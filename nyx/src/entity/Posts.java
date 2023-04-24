@@ -5,6 +5,10 @@
  */
 package entity;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javafx.scene.control.DatePicker;
+
 /**
  *
  * @author hmida
@@ -58,7 +62,7 @@ public class Posts {
     
      @Override
     public String toString() {
-        return "Personne{" + "id=" + id + ", titre=" + post_title + ", nom=" + post_content +", date=" + post_date +'}';
+        return "post{" + "id=" + id + ", titre=" + post_title + ", content=" + post_content +", date=" + post_date  + "date=" + post_image +"}";
     }
 
     
@@ -108,5 +112,7 @@ public class Posts {
     public void setPost_date(String post_date) {
         this.post_date = post_date;
     }
+
+
             
 }

@@ -16,9 +16,29 @@ public class Comment {
 
     String comment_content, comment_date;
      private static Comment instance;
+
+    public Comment() {
+    }
+
+    public Comment(int comment_id, int post_id, String comment_content, String comment_date) {
+        this.comment_id = comment_id;
+        this.post_id = post_id;
+        this.comment_content = comment_content;
+        this.comment_date = comment_date;
+    }
+
+    public Comment(int comment_id, String comment_content) {
+        this.comment_id = comment_id;
+        this.comment_content = comment_content;
+    }
+
     
     
     
+     @Override
+    public String toString() {
+        return "comment{" + "id=" + comment_id + ", titre=" + comment_content +"}";
+    }
     
     
     
@@ -29,6 +49,10 @@ public class Comment {
         }
         return instance;
  }
+
+    public Comment(int aInt, String string, String string0, String string1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     public int getComment_id() {
         return comment_id;
     }

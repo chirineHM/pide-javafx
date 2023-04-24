@@ -5,7 +5,7 @@
  */
 package ui;
 
-
+import javafx.fxml.FXMLLoader;
 import entity.Posts;
 import Service.PostService;
 import java.awt.image.BufferedImage;
@@ -14,35 +14,35 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import javax.imageio.ImageIO;
-
+import javafx.scene.control.DatePicker;
+import javafx.stage.Stage;
+import javafx.collections.transformation.SortedList;
+import javafx.collections.transformation.FilteredList;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -51,8 +51,13 @@ import javax.imageio.ImageIO;
  */
 public class FXMLController implements Initializable {
       Posts p = new Posts();
+        private Stage stage ;
+        private Scene scene;
+        private Parent  root;  
     @FXML
     private TextField tfdescription;
+    @FXML
+    private TextField tfchashtag;
     @FXML
     private TextField tfhashtag;
     @FXML
@@ -72,11 +77,15 @@ public class FXMLController implements Initializable {
     @FXML
     private TableColumn<?, ?> tcdate;
     @FXML
-    private TableColumn<?, ?> tcvisibility;
+    private DatePicker tdate;
+    private LocalDate localDate ;
     @FXML
     private TableColumn<?, ?> images;
     @FXML
     private ImageView imagep;
+    @FXML
+    private TextField searchBOX;
+       ObservableList<Posts> list;
 
     
     @FXML
@@ -106,6 +115,7 @@ public class FXMLController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
          
@@ -116,7 +126,7 @@ public class FXMLController implements Initializable {
           tcdescription.setCellValueFactory(new PropertyValueFactory<>("post_title"));
           tchashtag.setCellValueFactory(new PropertyValueFactory<>("post_content"));
           tcdate.setCellValueFactory(new PropertyValueFactory<>("post_date"));
-          tcvisibility.setCellValueFactory(new PropertyValueFactory<>("visibilite"));
+   images.setCellValueFactory(new PropertyValueFactory<>("post_image"));
           tftableview.setItems(list);
          
           /*images.setCellFactory(param -> {
@@ -141,10 +151,120 @@ public class FXMLController implements Initializable {
         return cell;
    });
           images.setCellValueFactory(new PropertyValueFactory<Post, Image>("imageP"));*/
-    }    
+    }  
+       @FXML
+    private void remove(ActionEvent event) {
+        Posts p=tftableview.getSelectionModel().getSelectedItem();
+       PostService service=new PostService();
+        service.supprimer(p.getId());
+        refreshtable();
+    }
+    
+    private void refreshtable()
+    {
+        PostService service=new PostService();
+          ObservableList<Posts> list = service.getall();
+         tcclient.setCellValueFactory(new PropertyValueFactory<>("id"));
+          tcdescription.setCellValueFactory(new PropertyValueFactory<>("post_title"));
+          tchashtag.setCellValueFactory(new PropertyValueFactory<>("post_content"));
+          tcdate.setCellValueFactory(new PropertyValueFactory<>("post_date"));
+    
+          tftableview.setItems(list);
+    }
+
+
+     @FXML
+    private void Add(ActionEvent event) {
+         PostService serv=new PostService();
+        
+        
+         
+         if (!tfchashtag.getText().equals("") ){
+          p.setPost_title(tfchashtag.getText());
+          p.setPost_content(tfhashtag.getText());
+         
+ 
+
+              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+          LocalDateTime now = LocalDateTime.now();  
+          String date= dtf.format(now);
+          p.setPost_date(date);
+
+         
+          
+          System.out.println(p.getPost_image());
+          serv.ajouter(p);
+          refreshtable();
+             
+       }else{
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("");
+		alert.setHeaderText("");
+		alert.setContentText("Verifier vos données ");
+                alert.showAndWait();
+       }
+    }
+    
+    @FXML
+    private void update(ActionEvent event) {
+         Posts p=tftableview.getSelectionModel().getSelectedItem();
+
+        PostService service=new PostService();
+         if (!tfchashtag.getText().equals("")) {
+          p.setPost_title(tfchashtag.getText());
+          p.setPost_content(tfhashtag.getText());
+  
+           
+           DatePicker datePicker = new DatePicker();
+        
+        // Set the local date to the current date
+        datePicker.setValue(LocalDate.now());
+     
+
+         
+          
+          System.out.println(p.getPost_image());
+          service.modifier(p);
+          refreshtable();
+             
+       }else{
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("");
+		alert.setHeaderText("");
+		alert.setContentText("Verifier vos données ");
+                alert.showAndWait();
+       }
+        
+    }
+     public void switchtoscene(ActionEvent event) throws IOException
+    {
+      Parent root = FXMLLoader.load(getClass().getResource("scene2.fxml"));
+      stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+      scene = new Scene(root);
+      
+      stage.setScene(scene);
+      stage.show();
+      
+    }
+ @FXML
+    private void Recherche(KeyEvent event) {
+        PostService se = new PostService();
+        String chaine = searchBOX.getText();
+        populateTable(se.chercherVoyage(chaine));
+    }
+     private void populateTable(ObservableList<Posts> branlist) {
+        tftableview.setItems(branlist);
+
+    }
+    
+
 
     
+    
+   
+    }
+    
 
     
     
-}
+

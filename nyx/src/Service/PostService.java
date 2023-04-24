@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Service;
+import entity.Comment;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,13 +30,13 @@ public class PostService implements NewInterface <Posts> {
     @Override
     public void ajouter(Posts t) {
         
-        String sql ="insert into posts(post_title,post_content) values (?,?)";
+        String sql ="insert into posts(post_title,post_content,post_date) values (?,?,?)";
         PreparedStatement ste;
         try {
             ste = cnx.prepareStatement(sql);
             ste.setString(1, t.getPost_title());
             ste.setString(2, t.getPost_content());
-      
+              ste.setString(3, t.getPost_date());
             ste.executeUpdate();
             System.out.println("Personne Ajoutée ");
         } catch (SQLException ex) {
@@ -109,6 +110,72 @@ public class PostService implements NewInterface <Posts> {
         }
         return posts;
         }
+        
+        
+        
+        
+            public void modifier(Posts t) {
+        try {
+            String req = "update posts set post_title=? ,post_content=? where id= ?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, t.getPost_title());
+            ps.setString(2, t.getPost_content());
+    
+            ps.setInt(3, (int) t.getId());
+       
+            ps.executeUpdate();
+            System.out.println("Post modifiée");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+            
+    public ObservableList<Posts> chercherVoyage(String chaine){
+          String sql="SELECT * FROM posts WHERE (Post_title LIKE ? or post_content LIKE ? )";
+
+            String ch=""+chaine+"%";
+         System.out.println(sql);
+            ObservableList<Posts> myList= FXCollections.observableArrayList();
+        try {
+           
+            Statement ste= cnx.createStatement();
+           // PreparedStatement pst = myCNX.getCnx().prepareStatement(requete6);
+            PreparedStatement stee =cnx.prepareStatement(sql);  
+            stee.setString(1, ch);
+            stee.setString(2, ch);
+      
+   
+         System.out.println(stee);
+
+            ResultSet rs = stee.executeQuery();
+            while (rs.next()){
+                
+                
+                Posts v = new Posts ();
+                v.setPost_title(rs.getString(3));
+                v.setPost_content(rs.getString(4));
+                v.setPost_date(rs.getString(5));
+             
+                v.setPost_image(rs.getString(6));
+   
+                myList.add(v);
+                System.out.println("titre trouvé! ");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return myList;
+      }
+            
+            
+     
+            
+            
+            
+            
+  
 }
+
+
     
 
