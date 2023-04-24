@@ -18,10 +18,10 @@
 
 <AnchorPane id="AnchorPane" prefHeight="981.0" prefWidth="1565.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AbonnementsController">
  
-    <Button fx:id="tfcreate" layoutX="239.0" layoutY="907.0" mnemonicParsing="false" onAction="#Add" prefHeight="43.0" prefWidth="90.0" text="Ajouter" />
+    <Button fx:id="tfcreate" layoutX="194.0" layoutY="907.0" mnemonicParsing="false" onAction="#Add" prefHeight="43.0" prefWidth="90.0" text="Ajouter" />
   
     <Button fx:id="removetf" layoutX="926.0" layoutY="885.0" mnemonicParsing="false" onAction="#remove" prefHeight="43.0" prefWidth="115.0" text="Supprimer" />
-    <Button fx:id="mod" layoutX="412.0" layoutY="907.0" mnemonicParsing="false" onAction="#Update" prefHeight="43.0" prefWidth="98.0" text="Modifier" />
+    <Button fx:id="mod" layoutX="346.0" layoutY="907.0" mnemonicParsing="false" onAction="#Update" prefHeight="43.0" prefWidth="90.0" text="Modifier" />
     <Button fx:id="searchButton" layoutX="1216.0" layoutY="110.0" onAction="#search" prefHeight="25.0" prefWidth="57.0" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="0" />
 
     <VBox alignment="CENTER" layoutX="632.0" layoutY="270.0" prefHeight="553.0" prefWidth="928.0" spacing="10.0" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="632.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="270.0">
@@ -73,22 +73,22 @@
     <TextField fx:id="searchField" layoutX="827.0" layoutY="110.0" prefHeight="0.0" prefWidth="349.0" />
    <ComboBox fx:id="tri" layoutX="1363.0" layoutY="110.0" prefWidth="150.0" />
    <Button layoutX="632.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#QR" prefHeight="43.0" prefWidth="115.0" text="QR Code" />
-   <Label layoutX="25.0" layoutY="154.0" prefHeight="17.0" prefWidth="134.0" text="Home">
+   <Label layoutX="25.0" layoutY="214.0" prefHeight="17.0" prefWidth="134.0" text="Home">
       <font>
          <Font size="31.0" />
       </font>
    </Label>
-   <Label layoutX="25.0" layoutY="342.0" prefHeight="17.0" prefWidth="134.0" text="Type">
+   <Label layoutX="25.0" layoutY="384.0" prefHeight="17.0" prefWidth="134.0" text="Type">
       <font>
          <Font size="31.0" />
       </font>
    </Label>
-   <Label layoutX="25.0" layoutY="515.0" prefHeight="17.0" prefWidth="134.0" text="Events">
+   <Label layoutX="25.0" layoutY="560.0" prefHeight="17.0" prefWidth="134.0" text="Events">
       <font>
          <Font size="31.0" />
       </font>
    </Label>
-   <Label layoutX="25.0" layoutY="668.0" prefHeight="17.0" prefWidth="134.0" text="Blogs">
+   <Label layoutX="25.0" layoutY="717.0" prefHeight="17.0" prefWidth="134.0" text="Blogs">
       <font>
          <Font size="31.0" />
       </font>
@@ -119,6 +119,7 @@
          </LinearGradient>
       </textFill>
    </Label>
+   <Button layoutX="496.0" layoutY="907.0" mnemonicParsing="false" onMouseClicked="#sms" prefHeight="43.0" prefWidth="90.0" text="SMS" />
   
 
      

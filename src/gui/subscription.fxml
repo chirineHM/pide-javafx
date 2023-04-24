@@ -75,6 +75,7 @@
             <Font size="23.0" />
          </font>
       </Label>
+      <Button fx:id="googleButton" layoutX="476.0" layoutY="119.0" mnemonicParsing="false" text="google" />
  
  
     </children>

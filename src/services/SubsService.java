@@ -18,6 +18,7 @@ import entities.typeSub;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
@@ -324,4 +325,45 @@ public List<Subscription> ordredbyDate() {
         primaryStage.setScene(scene);
        primaryStage.show();
     }
+    public List<Subscription> SUPPRIME() {
+    String req = "select * from subscription ";
+          ObservableList<Subscription> subscriptions = FXCollections.observableArrayList();
+    Date currentDate = new Date();
+    SubsService pdao=new SubsService();
+    try {
+       
+        Statement stmt = cnx.createStatement();
+        ResultSet rs = stmt.executeQuery(req);
+
+        while (rs.next()) {
+            Subscription p = new Subscription();
+
+            int typeId = rs.getInt("type_sub_id");
+            typeSub c = getTypeSubById(typeId);
+            p.setTypeSubs(c);
+
+            p.setId(rs.getInt("id"));
+            p.setDescription(rs.getString("description"));
+            p.setPrice(rs.getInt("price"));
+            p.setStart_date(rs.getDate("start_date"));
+            p.setEnd_date(rs.getDate("end_date"));
+            p.setPeriod(rs.getInt("period"));
+
+            subscriptions.add(p);
+              Date end_date=rs.getDate("end_date");
+               if (end_date.before(currentDate)) {
+                   
+                System.out.println("kbal"); //pdao.delete(rs.getInt("id"));
+                pdao.supprimer(rs.getInt("id"));
+
+            } else {
+                System.out.println("mezelet");
+            }
+        }
+
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return subscriptions;
+}
 }

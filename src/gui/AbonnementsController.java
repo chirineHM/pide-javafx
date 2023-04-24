@@ -1,4 +1,8 @@
 
+
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import entities.Subscription;
 import entities.typeSub;
 import java.net.URL;
@@ -15,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -79,6 +84,12 @@ public class AbonnementsController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
+    
+      
+        
+        
         subsService = new SubsService();
 
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -111,7 +122,16 @@ typeN.setCellValueFactory(cellData -> {
         
         
         
-        
+            Alert alertee= new Alert(Alert.AlertType.CONFIRMATION);
+    alertee.setTitle("ALETRE ");
+    alertee.setHeaderText(null);
+        alertee.setContentText("Abonnement ont été termine voulez vous les supprimer ? ");
+    alertee.showAndWait();
+    if (alertee.getResult() == ButtonType.OK) {
+
+     subsService.SUPPRIME();
+    refresh();
+    }
         
         
         ///////////////////////////////////////////////
@@ -148,7 +168,8 @@ typeN.setCellValueFactory(cellData -> {
 
         ///////////////////////////////////////////////
         
-
+    
+      
     
         
               }
@@ -334,6 +355,7 @@ selectedSubscription.setTypeSubs(selectedType);
 
 
 */
+
 @FXML
 private void search(ActionEvent event) {
     String searchText = searchField.getText().trim().toLowerCase();
@@ -358,6 +380,27 @@ private void search(ActionEvent event) {
         subsService.Qr(qrStage, p);
       
           
+    }
+    
+    
+  public static final String ACCOUNT_SID = "ACb63a0b4fd4a6de530177199e0a543bab";
+  public static final String AUTH_TOKEN = "4e01b5c984e864c3bf424d7a76f2e2bf";
+
+  
+    @FXML
+    private void sms(MouseEvent event) {
+        
+        SubsService pd = new SubsService();
+
+        subscriptionsTable.refresh();
+        pd.getAllSubscriptions();
+        Subscription p;
+        p=subscriptionsTable.getSelectionModel().getSelectedItem();
+        System.out.println(p);
+     
+        String promo="L'Abonnement "+p.getPrice()+"% commence le "+p.getStart_date()+" et se termine le "+p.getEnd_date();
+            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+                    Message message = Message.creator(new PhoneNumber("+21653500513"),new PhoneNumber("+16813203620"),promo).create();
     }
 
 

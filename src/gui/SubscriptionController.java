@@ -8,7 +8,6 @@ import entities.typeSub;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,9 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
@@ -27,6 +23,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import services.SubService;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Button;
+
 
 public class SubscriptionController implements Initializable {
 
@@ -43,6 +41,7 @@ private TextField nameTextField;
 private TextField descriptionTextField;
 @FXML
 private TextField etatTextField;
+
 
     @FXML
     private TableView<typeSub> subscriptionTable;
@@ -69,6 +68,9 @@ private Label abonnementsLabel;
     private Button printButton;
 @FXML
 private Button payerButton;
+@FXML
+private Button googleButton;
+
    
 
     @Override
@@ -103,6 +105,15 @@ private Button payerButton;
             e.printStackTrace();
         }
     });
+         googleButton.setOnAction(event -> {
+    String url1 = "https://www.google.com/";
+    try {
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create(url1));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+});
+
         
     }
     @FXML

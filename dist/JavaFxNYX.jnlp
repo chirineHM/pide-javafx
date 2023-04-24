@@ -8,12 +8,13 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="JavaFxNYX.jar" size="26943" download="eager" />
+    <jar href="JavaFxNYX.jar" size="28479" download="eager" />
     <jar href="lib\core-3.1.0-javadoc.jar" size="1027366" download="eager" />
     <jar href="lib\core-3.1.0.jar" size="538421" download="eager" />
     <jar href="lib\json-simple-1.1.1 (1).jar" size="23737" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
     <jar href="lib\pdfbox-app-3.0.0-alpha3.jar" size="10877250" download="eager" />
+    <jar href="lib\twilio-9.2.4-jar-with-dependencies.jar" size="11026113" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="JavaFxNYX" >
     <param name="requiredFXVersion" value="8.0+"/>
