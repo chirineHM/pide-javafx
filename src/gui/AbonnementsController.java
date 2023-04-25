@@ -125,7 +125,7 @@ typeN.setCellValueFactory(cellData -> {
             Alert alertee= new Alert(Alert.AlertType.CONFIRMATION);
     alertee.setTitle("ALETRE ");
     alertee.setHeaderText(null);
-        alertee.setContentText("Abonnement ont été termine voulez vous les supprimer ? ");
+        alertee.setContentText("Vous voulez supprimer les Abonnements qui ont été termine ? ");
     alertee.showAndWait();
     if (alertee.getResult() == ButtonType.OK) {
 
@@ -134,7 +134,7 @@ typeN.setCellValueFactory(cellData -> {
     }
         
         
-        ///////////////////////////////////////////////
+      ///////////////////////////////////////////////
         
         
         ObservableList<String> options = FXCollections.observableArrayList("Par prix","Par date");
@@ -386,6 +386,7 @@ private void search(ActionEvent event) {
   public static final String ACCOUNT_SID = "ACb63a0b4fd4a6de530177199e0a543bab";
   public static final String AUTH_TOKEN = "4e01b5c984e864c3bf424d7a76f2e2bf";
 
+  
   
     @FXML
     private void sms(MouseEvent event) {

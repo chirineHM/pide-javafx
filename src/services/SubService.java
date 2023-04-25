@@ -99,7 +99,8 @@ public List<typeSub> afficher() {
     }
     return typeSubs;
 }
-  public ObservableList<typeSub> getall() {
+  public ObservableList<typeSub> getall() 
+  {
         ObservableList<typeSub> posts = FXCollections.observableArrayList();
         try {
             String req = "select * from type_sub";
@@ -116,7 +117,7 @@ public List<typeSub> afficher() {
             System.out.println(ex.getMessage());
         }
         return posts;
-        }
+    }
 /*
     @Override
     public void supprimer(typeSub t) {

@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="JavaFxNYX.jar" size="28479" download="eager" />
+    <jar href="JavaFxNYX.jar" size="28470" download="eager" />
     <jar href="lib\core-3.1.0-javadoc.jar" size="1027366" download="eager" />
     <jar href="lib\core-3.1.0.jar" size="538421" download="eager" />
     <jar href="lib\json-simple-1.1.1 (1).jar" size="23737" download="eager" />

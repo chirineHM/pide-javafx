@@ -146,6 +146,7 @@ public int getTypeSubIdByName(String typeName) {
     }
     return typeId;
 }
+
 public List<String> getAllTypeSubNames() {
     List<String> typeSubNames = new ArrayList<>();
     try {
@@ -325,6 +326,8 @@ public List<Subscription> ordredbyDate() {
         primaryStage.setScene(scene);
        primaryStage.show();
     }
+    
+    
     public List<Subscription> SUPPRIME() {
     String req = "select * from subscription ";
           ObservableList<Subscription> subscriptions = FXCollections.observableArrayList();
@@ -353,17 +356,18 @@ public List<Subscription> ordredbyDate() {
               Date end_date=rs.getDate("end_date");
                if (end_date.before(currentDate)) {
                    
-                System.out.println("kbal"); //pdao.delete(rs.getInt("id"));
+             
                 pdao.supprimer(rs.getInt("id"));
 
             } else {
-                System.out.println("mezelet");
+                System.out.println("not");
             }
         }
-
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
     }
+    
     return subscriptions;
 }
+    
 }
