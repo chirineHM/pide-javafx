@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3A8090;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.Ajouter_eventController">
+   <children>
+      <TextField layoutX="300.0" layoutY="230.0" prefHeight="26.0" prefWidth="186.0" fx:id="ximage" />
+      <TextField layoutX="300.0" layoutY="319.0" prefHeight="26.0" prefWidth="186.0" fx:id="xnbr" />
+      <TextField layoutX="300.0" layoutY="187.0" prefHeight="26.0" prefWidth="186.0" fx:id="xcat" />
+      <TextField layoutX="300.0" layoutY="148.0" prefHeight="26.0" prefWidth="186.0" fx:id="xdesc" />
+      <TextField layoutX="300.0" layoutY="107.0" prefHeight="26.0" prefWidth="186.0" fx:id="xevent" />
+      <HBox prefHeight="44.0" prefWidth="600.0" style="-fx-background-color: #D7EDF2;">
+         <children>
+            <ImageView fitHeight="55.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ressource/logo1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <VBox layoutY="43.0" prefHeight="359.0" prefWidth="167.0" style="-fx-background-color: #D7EDF2;">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="167.0" text="Blog">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/blog.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="167.0" text="Produit">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/traits.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="70.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="167.0" text="Evenement">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/un-evenement.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="130.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="167.0" text="Panier">
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/panier.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></VBox>
+      <Label layoutX="181.0" layoutY="112.0" prefHeight="17.0" prefWidth="119.0" text="Nom Evenement" textFill="#f2eeee" />
+      <Label layoutX="181.0" layoutY="153.0" prefHeight="17.0" prefWidth="119.0" text="Description" textFill="#f2eeee" />
+      <Label layoutX="181.0" layoutY="192.0" prefHeight="17.0" prefWidth="119.0" text="Categorie" textFill="#f2eeee" />
+      <Label layoutX="181.0" layoutY="280.0" prefHeight="17.0" prefWidth="119.0" text="Date" textFill="#f2eeee" />
+      <Label layoutX="181.0" layoutY="235.0" prefHeight="17.0" prefWidth="119.0" text="Image" textFill="#f2eeee" />
+      <Label layoutX="181.0" layoutY="324.0" prefHeight="17.0" prefWidth="119.0" text="Nombre part" textFill="#f2eeee" />
+      <Button layoutX="507.0" layoutY="357.0" mnemonicParsing="false" onAction="#ajouter_Event" text="Ajouter" />
+      <TextField layoutX="300.0" layoutY="276.0" prefHeight="26.0" prefWidth="186.0" fx:id="xdate" />
+   </children>
+</AnchorPane>

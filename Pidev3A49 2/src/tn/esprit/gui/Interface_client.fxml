@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="493.0" prefWidth="719.0" style="-fx-background-color: #3A8090;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.Interface_clientController">
+   <children>
+      <VBox layoutY="45.0" prefHeight="446.0" prefWidth="200.0" style="-fx-background-color: #D7EDF2;">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="201.0" text="Blog">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/blog.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="201.0" text="Produits">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/traits.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="81.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="201.0" text="Evenements">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/un-evenement.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="152.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="201.0" text="Panier">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/panier.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></VBox>
+      <HBox layoutY="-5.0" prefHeight="50.0" prefWidth="719.0" style="-fx-background-color: #D7EDF2;">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="65.0" fitWidth="200.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/logo1.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="-1.0" layoutY="2.0" mnemonicParsing="false" onAction="#gotoacceuil" opacity="0.0" prefHeight="50.0" prefWidth="200.0" text="Button" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+      <Button layoutX="431.0" layoutY="406.0" mnemonicParsing="false" onAction="#Participer" text="Participer" />
+      <TableView layoutX="200.0" layoutY="132.0" prefHeight="201.0" prefWidth="522.0" fx:id="xtable">
+         <columns>
+            <TableColumn prefWidth="107.5" text="Nom Evenement" fx:id="xnom_even" />
+            <TableColumn prefWidth="82.5" text="Description" fx:id="xdesc_event" />
+            <TableColumn prefWidth="111.0" text="Categorie" fx:id="xcategorie_even" />
+            <TableColumn prefWidth="65.0" text="Date" fx:id="xdate" />
+            <TableColumn prefWidth="70.0" text="Image" fx:id="ximage_even" />
+            <TableColumn prefWidth="130.5" text="nbre de pati" fx:id="xnb_part" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

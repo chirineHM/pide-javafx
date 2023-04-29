@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.TestController">
+   <children>
+      <TableView layoutX="92.0" layoutY="26.0" prefHeight="200.0" prefWidth="469.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="id" fx:id="xid" />
+          <TableColumn prefWidth="75.0" text="nom" fx:id="xnom_even" />
+            <TableColumn prefWidth="75.0" text="Desc" fx:id="xdesc_event" />
+            <TableColumn prefWidth="75.0" text="cat" fx:id="xcategorie_event" />
+            <TableColumn prefWidth="75.0" text="date" fx:id="xdate" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
