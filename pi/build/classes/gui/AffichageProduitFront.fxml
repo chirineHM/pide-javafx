@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.geometry.Pos?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPaneE1" prefHeight="569.0" prefWidth="695.0" stylesheets="@ok.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AffichageProduitFrontController">
+  <children>
+       <ScrollPane fitToWidth="true" prefHeight="569.0" prefWidth="695.0">
+           <content>
+               <TilePane fx:id="produitsTilePane" hgap="10" prefColumns="3"  styleClass="my-tableview" tileAlignment="TOP_LEFT" vgap="10" />
+           </content>
+       </ScrollPane>
+   </children>
+</AnchorPane>
