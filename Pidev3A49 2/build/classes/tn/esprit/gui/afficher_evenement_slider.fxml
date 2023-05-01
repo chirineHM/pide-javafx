@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="568.0" prefWidth="648.0" style="-fx-background-color: #3A8090;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.Afficher_evenement_sliderController">
+   <children>
+      <ImageView fitHeight="191.0" fitWidth="290.0" layoutX="261.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" fx:id="ximage_even" />
+      <Button layoutX="469.0" layoutY="285.0" mnemonicParsing="false" onAction="#Next" prefHeight="26.0" prefWidth="70.0" text="Next" />
+      <Button layoutX="268.0" layoutY="285.0" mnemonicParsing="false" onAction="#Previous" text="Previous" />
+      <Label layoutX="381.0" layoutY="289.0" prefHeight="17.0" prefWidth="49.0" fx:id="xlabel" />
+      <Label layoutX="264.0" layoutY="333.0" text="Nom" />
+      <Label layoutX="262.0" layoutY="365.0" text="Description" />
+      <Label layoutX="262.0" layoutY="407.0" text="Nbr de places disponibles" />
+      <Label layoutX="264.0" layoutY="454.0" text="Date de l'évènement" />
+      <TextField layoutX="360.0" layoutY="329.0" prefHeight="26.0" prefWidth="188.0" fx:id="xnom_even" />
+      <TextField layoutX="360.0" layoutY="361.0" prefHeight="26.0" prefWidth="188.0" fx:id="xdesc_event" />
+      <TextField layoutX="415.0" layoutY="403.0" prefHeight="26.0" prefWidth="77.0" fx:id="xnb_part" />
+      <TextField layoutX="389.0" layoutY="449.0" prefHeight="26.0" prefWidth="188.0" fx:id="xdate" />
+      <HBox layoutX="-4.0" prefHeight="57.0" prefWidth="654.0" style="-fx-background-color: #D7EDF2;">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/logo1.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="acceuil" layoutX="-12.0" layoutY="-14.0" mnemonicParsing="false" onAction="#gotoaccueil" opacity="0.0" prefHeight="56.0" prefWidth="219.0" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+      <VBox layoutY="55.0" prefHeight="513.0" prefWidth="226.0" style="-fx-background-color: #D7EDF2;">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="84.0" prefWidth="226.0" text="Blog">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/blog.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Academy Engraved LET Plain:1.0" size="31.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="89.0" prefWidth="231.0" text="Produits">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/traits.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Academy Engraved LET Plain:1.0" size="31.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#participer" prefHeight="86.0" prefWidth="235.0" text="Evenements">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/un-evenement.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Academy Engraved LET Plain:1.0" size="24.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="86.0" prefWidth="229.0" text="Panier">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/panier.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Academy Engraved LET Plain:1.0" size="30.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Button layoutX="458.0" layoutY="510.0" mnemonicParsing="false" onAction="#Participer" text="Participer" />
+   </children>
+</AnchorPane>

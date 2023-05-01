@@ -208,7 +208,7 @@ public class ListEventController implements Initializable {
     }
       @FXML
     private void participer(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Interface_client.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Ajouter_event.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
