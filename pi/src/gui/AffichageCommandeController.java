@@ -19,6 +19,8 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,6 +43,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import services.CommandeService;
 import javafx.stage.Stage;
@@ -73,6 +76,18 @@ public class AffichageCommandeController implements Initializable {
     @FXML
     private TextField filtre ;
  ObservableList<Commande> obList;
+    @FXML
+    private VBox menuBox;
+    @FXML
+    private Button user;
+    @FXML
+    private Button prod;
+    @FXML
+    private Button commande;
+    @FXML
+    private Button sub;
+    @FXML
+    private Button blog;
     
     /**
      * Initializes the controller class.
@@ -128,20 +143,20 @@ public class AffichageCommandeController implements Initializable {
 
                          	        System.out.println("hello");
                         	        System.out.println("DATA =" + A);
-                         	        // Créer une boîte de dialogue
+                         	        // Crï¿½er une boï¿½te de dialogue
                         	        Dialog<Commande> dialog = new Dialog<>();
                         	        dialog.setTitle("Modifier la commande");
 
-                        	        // Créer un bouton pour valider la modification
+                        	        // Crï¿½er un bouton pour valider la modification
                         	        ButtonType validerButtonType = new ButtonType("Valider", ButtonData.OK_DONE);
                         	        dialog.getDialogPane().getButtonTypes().addAll(validerButtonType, ButtonType.CANCEL);
 
-                        	        // Créer les champs de saisie pour la modification
+                        	        // Crï¿½er les champs de saisie pour la modification
                         	        TextField adresseLivraisonTextField = new TextField();
 
                         	        TextField prixTotalTextField = new TextField();
                         	        prixTotalTextField.setText(Double.toString(A.getPrixTotal()));
-                        	        // Ajouter les champs à la boîte de dialogue
+                        	        // Ajouter les champs ï¿½ la boï¿½te de dialogue
                         	        GridPane grid = new GridPane();
                         	        grid.add(new Label("Adresse de livraison:"), 0, 0);
                         	        grid.add(adresseLivraisonTextField, 1, 0);
@@ -149,7 +164,7 @@ public class AffichageCommandeController implements Initializable {
                         	        grid.add(prixTotalTextField, 1, 1);
                         	        dialog.getDialogPane().setContent(grid);
 
-                        	        // Valider la modification lorsque le bouton "Valider" est cliqué
+                        	        // Valider la modification lorsque le bouton "Valider" est cliquï¿½
                         	        dialog.setResultConverter(dialogButton -> {
                         	            if (dialogButton == validerButtonType) {
                         	                Commande modifiedCommande = new Commande(A.getId(), A.getPanierId(), A.getDateCommande(), adresseLivraisonTextField.getText(), Double.parseDouble(prixTotalTextField.getText()), A.getStatus());
@@ -158,14 +173,14 @@ public class AffichageCommandeController implements Initializable {
                         	            return null;
                         	        });
 
-                        	        // Afficher la boîte de dialogue et attendre la réponse de l'utilisateur
+                        	        // Afficher la boï¿½te de dialogue et attendre la rï¿½ponse de l'utilisateur
                         	        Optional<Commande> result = dialog.showAndWait();
 
-                        	        // Si l'utilisateur a cliqué sur "Valider", mettre à jour la commande dans le TableView
+                        	        // Si l'utilisateur a cliquï¿½ sur "Valider", mettre ï¿½ jour la commande dans le TableView
                         	        result.ifPresent(modifiedCommande -> {
                         	            int index = tableView.getSelectionModel().getSelectedIndex();
                         	            tableView.getItems().set(index, modifiedCommande); // Update the Commande object in the TableView
-                        	            tableView.refresh(); // Refresh the TableView to show the updated Commande object                        	            // Appeler le service de mise à jour de commande pour enregistrer les modifications
+                        	            tableView.refresh(); // Refresh the TableView to show the updated Commande object                        	            // Appeler le service de mise ï¿½ jour de commande pour enregistrer les modifications
                         	            try {
     										a.updateCommande(modifiedCommande);
     									} catch (SQLException e) {
@@ -269,7 +284,6 @@ public class AffichageCommandeController implements Initializable {
 
     }
 
-    @FXML
     private void ajouterP(ActionEvent event) {
           try {
                   Parent   root = FXMLLoader.load(getClass().getResource("AjoutCommande.fxml"));
@@ -283,7 +297,6 @@ public class AffichageCommandeController implements Initializable {
                 };
     }
 
-    @FXML
     private void boutiqueShow(ActionEvent event) {
          try {
                   Parent   root = FXMLLoader.load(getClass().getResource("AffichageCommandeFront.fxml"));
@@ -315,8 +328,8 @@ public class AffichageCommandeController implements Initializable {
                 }
                 if (!productFound) {
                     Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Commande non trouvé");
-                    alert.setHeaderText("Aucun commande ne correspond à votre recherche");
+                    alert.setTitle("Commande non trouvï¿½");
+                    alert.setHeaderText("Aucun commande ne correspond ï¿½ votre recherche");
                     alert.setContentText("Veuillez essayer une autre recherche.");
                     alert.showAndWait();
                 }
@@ -371,6 +384,40 @@ public class AffichageCommandeController implements Initializable {
       ex.printStackTrace();
 
    }
+    }
+
+    @FXML
+    private void user(ActionEvent event) {
+    }
+
+    @FXML
+    private void prod(ActionEvent event) {
+    }
+
+    @FXML
+    private void commande(ActionEvent event) {
+            try {
+
+            Parent page1= FXMLLoader.load(getClass().getResource("../gui/AffichageCommande.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+          
+        } catch (IOException ex) {
+            System.out.println("Erreur\n");
+            Logger.getLogger(AffichageCommandeController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+    
+
+    @FXML
+    private void sub(ActionEvent event) {
+    }
+
+    @FXML
+    private void blog(ActionEvent event) {
     }
 }
     

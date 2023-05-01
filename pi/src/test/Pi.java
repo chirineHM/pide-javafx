@@ -23,11 +23,12 @@ public class Pi extends Application{
     {
     	Pi.stg = primaryStage;
      
+        // FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/Interface_client.fxml"));
          FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/AffichageCommande.fxml"));
          //FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/AjoutProduit.fxml"));
 
 	            //FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/ProduitBack.fxml"));
-                  // FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/categorieBack.fxml"));
+                   //FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/categorieBack.fxml"));
 	            // FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/ajoutCat.fxml"));
                  
                 //FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/AffichageProduitFront.fxml"));

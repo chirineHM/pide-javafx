@@ -41,7 +41,7 @@
             <Image url="@logo.png" />
          </image>
       </ImageView>
-            <Button mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" prefWidth="108.0" text="utilisateur">
+            <Button fx:id="user" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#user" prefHeight="65.0" prefWidth="108.0" text="utilisateur">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -51,25 +51,25 @@
                <padding>
                   <Insets right="20.0" />
                </padding></Button>
-            <Button mnemonicParsing="false" prefHeight="66.0" prefWidth="107.0" text="produit">
+            <Button fx:id="prod" mnemonicParsing="false" onAction="#prod" prefHeight="66.0" prefWidth="107.0" text="produit">
                <font>
                   <Font name="Georgia" size="15.0" />
                </font>
                <padding>
                   <Insets right="35.0" />
                </padding></Button>
-            <Button mnemonicParsing="false" prefHeight="66.0" prefWidth="107.0" text="commande">
+            <Button fx:id="commande" mnemonicParsing="false" onAction="#commande" prefHeight="66.0" prefWidth="107.0" text="commande">
                <font>
                   <Font name="Georgia" size="15.0" />
                </font>
                <padding>
                   <Insets right="15.0" />
                </padding></Button>
-            <Button mnemonicParsing="false" prefHeight="73.0" prefWidth="107.0" text="abonnement">
+            <Button fx:id="sub" mnemonicParsing="false" onAction="#sub" prefHeight="73.0" prefWidth="107.0" text="abonnement">
                <font>
                   <Font name="Georgia" size="15.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="108.0" text="blog">
+            <Button fx:id="blog" mnemonicParsing="false" onAction="#blog" prefHeight="60.0" prefWidth="108.0" text="blog">
                <font>
                   <Font name="Georgia" size="15.0" />
                </font>

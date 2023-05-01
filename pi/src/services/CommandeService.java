@@ -136,7 +136,7 @@ public class CommandeService {
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
-			System.out.println("commande a �t� supprim� avec succ�s !");
+			System.out.println("commande a été supprimé avec succ�s !");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Erreur lors de la suppression de commande.");
