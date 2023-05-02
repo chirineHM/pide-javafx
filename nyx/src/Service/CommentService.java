@@ -28,7 +28,7 @@ public class CommentService implements NewInterface <Comment> {
   Connection cnx;
 
   public CommentService() {
-        cnx = Myconnection.getInstance().getCnx();
+      cnx = Myconnection.getInstance().getCnx();
     }
     
     @Override

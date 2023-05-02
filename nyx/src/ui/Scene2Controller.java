@@ -8,15 +8,22 @@ package ui;
 
 import Service.CommentService;
 import entity.Comment;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -32,6 +39,9 @@ public class Scene2Controller implements Initializable {
     private TableColumn<?, ?> ci;
     @FXML
     private TableColumn<?, ?> cc;
+        private Stage stage ;
+        private Scene scene;
+        private Parent  root;  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -51,6 +61,17 @@ public void displayComments() {
     
     
 }
+ public void switchtoscenehello(ActionEvent event) throws IOException
+    {
+      Parent root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
+      stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+      scene = new Scene(root);
+      
+      stage.setScene(scene);
+      stage.show();
+      
+    }
+
 
     
     }  

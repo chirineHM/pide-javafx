@@ -20,7 +20,7 @@
       <BorderPane layoutX="33.0" layoutY="-7.0" />
       <AnchorPane id="AnchorPane" layoutX="33.0" layoutY="46.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0">
          <children>
-            <AnchorPane layoutX="-47.0" layoutY="-46.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="846.0" prefWidth="1332.0" style="-fx-background-color: #2F2B43;">
+            <AnchorPane layoutX="-47.0" layoutY="-46.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="846.0" prefWidth="1332.0" style="-fx-background-color: #191414;">
                <children>
                   <TableView fx:id="tftableview" layoutX="581.0" layoutY="119.0" prefHeight="578.0" prefWidth="710.0">
                     <columns>
@@ -31,9 +31,9 @@
                         <TableColumn fx:id="images" prefWidth="181.0" text="image" />
                     </columns>
                   </TableView>
-                  <Pane layoutY="81.0" prefHeight="61.0" prefWidth="262.0" style="-fx-background-color: #FA2C56; -fx-background-radius: 5;">
+                  <Pane layoutY="81.0" prefHeight="61.0" prefWidth="262.0" style="-fx-background-color: #1DB954; -fx-background-radius: 5;">
                      <children>
-                        <Label layoutX="103.0" layoutY="17.0" text="POSTS" textFill="WHITE">
+                        <Label layoutX="103.0" layoutY="17.0" text="POSTS">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -51,8 +51,8 @@
                      </font>
                   </Text>
                    <TextField fx:id="tfchashtag" layoutX="92.0" layoutY="234.0" prefHeight="151.0" prefWidth="312.0" />
-                  <Button layoutX="99.0" layoutY="625.0" mnemonicParsing="false" onAction="#addphoto" prefHeight="25.0" prefWidth="312.0" text="Ajouter une image" textFill="#da1212" />
-                  <Button fx:id="tfadd" layoutX="99.0" layoutY="741.0" mnemonicParsing="false" onAction="#Add" prefHeight="61.0" prefWidth="312.0" style="-fx-background-color: #FA2C56;" text="Ajouter" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                  <Button layoutX="99.0" layoutY="625.0" mnemonicParsing="false" onAction="#addphoto" prefHeight="25.0" prefWidth="312.0" style="-fx-background-color: #1DB954;" text="Ajouter une image" />
+                  <Button fx:id="tfadd" layoutX="142.0" layoutY="748.0" mnemonicParsing="false" onAction="#Add" prefHeight="52.0" prefWidth="174.0" style="-fx-background-color: #1DB954;" text="Ajouter" textOverrun="WORD_ELLIPSIS">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -63,7 +63,7 @@
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Text>
-                  <Button fx:id="tfadd1" layoutX="1127.0" layoutY="55.0" mnemonicParsing="false" onAction="#switchtoscene" prefHeight="36.0" prefWidth="164.0" style="-fx-background-color: #FA2C56;" text="Comments" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                  <Button fx:id="tfadd1" layoutX="1127.0" layoutY="56.0" mnemonicParsing="false" onAction="#switchtoscene" prefHeight="51.0" prefWidth="155.0" style="-fx-background-color: #1DB954;" text="Comments" textOverrun="WORD_ELLIPSIS">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -71,18 +71,23 @@
                   <PointLight color="CHARTREUSE" layoutX="172.0" layoutY="31.0" lightOn="true" />
                   <TextField fx:id="searchBOX" layoutX="581.0" layoutY="68.0" onKeyTyped="#Recherche" prefHeight="26.0" prefWidth="333.0" />
                   <Pagination layoutX="845.0" layoutY="699.0" prefHeight="52.0" prefWidth="200.0" />
-                  <Button fx:id="tfadd11" layoutX="927.0" layoutY="67.0" mnemonicParsing="false" onAction="#Recherche" prefHeight="1.0" prefWidth="80.0" style="-fx-background-color: #FA2C56;" text="search" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                  <Text fill="WHITE" layoutX="581.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="search">
                      <font>
-                        <Font size="13.0" />
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="hihi" layoutX="955.0" layoutY="55.0" mnemonicParsing="false" onAction="#switchtoscenehihi" prefHeight="43.0" prefWidth="100.0" style="-fx-background-color: #1DB954;" text="Front" textOverrun="WORD_ELLIPSIS">
+                     <font>
+                        <Font size="25.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
-            <Button fx:id="tfupdate" layoutX="633.0" layoutY="698.0" mnemonicParsing="false" onAction="#update" prefHeight="61.0" prefWidth="239.0" style="-fx-background-color: #FA2C56;" text="Modifier" textFill="WHITE">
+            <Button fx:id="tfupdate" layoutX="633.0" layoutY="719.0" mnemonicParsing="false" onAction="#update" prefHeight="41.0" prefWidth="164.0" style="-fx-background-color: #1DB954;" text="Modifier">
                <font>
                   <Font size="25.0" />
                </font></Button>
-            <Button fx:id="tfremove" layoutX="968.0" layoutY="698.0" mnemonicParsing="false" onAction="#remove" prefHeight="61.0" prefWidth="262.0" style="-fx-background-color: #FA2C56;" text="Supprimer" textFill="WHITE">
+            <Button fx:id="tfremove" layoutX="968.0" layoutY="719.0" mnemonicParsing="false" onAction="#remove" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: #1DB954;" text="Supprimer">
                <font>
                   <Font size="24.0" />
                </font></Button>

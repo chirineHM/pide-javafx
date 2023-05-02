@@ -16,7 +16,7 @@ import javafx.scene.control.DatePicker;
 public class Posts {
      private static Posts instance;
      private int id;
-    private String post_title , post_image, post_content,post_date; 
+     private String post_title , post_image, post_content,post_date; 
 
     public Posts() {
     }
@@ -28,7 +28,7 @@ public class Posts {
         this.post_date = post_date;
     }
 
-    public Posts(int id, String post_title, String post_image, String post_content, String post_date) {
+    public Posts(int id, String post_title, String post_content, String post_date ,String post_image) {
         this.id = id;
         this.post_title = post_title;
         this.post_image = post_image;
@@ -46,6 +46,11 @@ public class Posts {
         this.post_title = post_title;
         this.post_content = post_content;
         this.post_date = post_date;
+    }
+    
+
+    public Posts(String string, String string0, String string1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
   

@@ -43,6 +43,7 @@ import javafx.stage.Stage;
 import javafx.collections.transformation.SortedList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -95,7 +96,7 @@ public class FXMLController implements Initializable {
         fc.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"));
         File f = fc.showOpenDialog(null);
-        String DBPath = "C:\\\\\\\\xampp\\\\\\\\htdocs\\\\\\\\Version-Integre\\\\\\\\public\\\\\\\\uploads\\\\\\\\"+f.getName();
+        String DBPath = "C:\\Users\\hmida\\Documents\\GitHub\\Pidev-e-sports-3A49\\Pi\\public\\uploads"+f.getName();
         String i = f.getName();
         p.setPost_image(i);
         if (f != null){
@@ -213,7 +214,7 @@ public class FXMLController implements Initializable {
          if (!tfchashtag.getText().equals("")) {
           p.setPost_title(tfchashtag.getText());
           p.setPost_content(tfhashtag.getText());
-  
+
            
            DatePicker datePicker = new DatePicker();
         
@@ -252,12 +253,25 @@ public class FXMLController implements Initializable {
         String chaine = searchBOX.getText();
         populateTable(se.chercherVoyage(chaine));
     }
-     private void populateTable(ObservableList<Posts> branlist) {
-        tftableview.setItems(branlist);
+     private void populateTable(ObservableList<Posts> list) {
+         
+        tftableview.setItems(list);
 
     }
+     
+      public void switchtoscenehihi(ActionEvent event) throws IOException
+    {
+      Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+      stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+      scene = new Scene(root);
+      
+      stage.setScene(scene);
+      stage.show();
+      
+    }
+     
     
-
+       
 
     
     
